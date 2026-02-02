@@ -1,0 +1,77 @@
+import random
+
+print("🤖 Smart English Chatbot Started")
+print("You can type anything (bye to exit)\n")
+
+def reply(user):
+    user = user.lower()
+
+    # GREETINGS
+    if any(w in user for w in ["hi", "hello", "hey"]):
+        return random.choice([
+            "Hello! 😊",
+            "Hi there! 👋",
+            "Hey! How can I help you?"
+        ])
+
+    # HOW ARE YOU
+    if any(w in user for w in ["how are you", "how r u", "how you doing"]):
+        return random.choice([
+            "I'm doing great 😊",
+            "All good 👍 Thanks for asking!",
+            "I'm fine. Hope you are too!"
+        ])
+
+    # NAME
+    if "name" in user:
+        return random.choice([
+            "My name is SmartBot 🤖",
+            "You can call me your chatbot assistant 😊"
+        ])
+
+    # WHAT ARE YOU DOING
+    if any(w in user for w in ["what are you doing", "what you doing", "doing now"]):
+        return random.choice([
+            "I'm chatting with you 😊",
+            "I'm here to help you 👍",
+            "Talking with you makes my day 😄"
+        ])
+
+    # LIKE / LOVE
+    if any(w in user for w in ["i like you", "i love you"]):
+        return random.choice([
+            "That's so kind of you ❤️",
+            "Aww 😊 I like talking to you too!",
+            "Thank you! That means a lot 😄"
+        ])
+
+    # OK / YES / NO
+    if user.strip() in ["ok", "okay", "hmm", "oh", "yes", "no"]:
+        return random.choice([
+            "Alright 👍",
+            "Okay 😊",
+            "Got it!"
+        ])
+
+    # BYE
+    if any(w in user for w in ["bye", "goodbye", "exit"]):
+        return random.choice([
+            "Goodbye 👋 Take care!",
+            "Bye 😊 See you soon!"
+        ])
+
+    # UNKNOWN BUT SMART
+    return random.choice([
+        "I understand English, but I’m still learning 😊",
+        "Can you rephrase that in another way?",
+        "That sounds interesting!"
+    ])
+
+
+while True:
+    user = input("You: ").strip()
+    bot_reply = reply(user)
+    print("Bot:", bot_reply)
+
+    if any(w in user.lower() for w in ["bye", "exit", "goodbye"]):
+        break
