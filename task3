@@ -1,0 +1,41 @@
+# Hardcoded stock prices
+stocks = {
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOG": 140,
+    "MSFT": 320
+}
+
+total_investment = 0
+
+print("📈 Stock Portfolio Tracker")
+
+while True:
+    stock_name = input("Enter stock name (or 'done' to finish): ").upper()
+
+    if stock_name == "DONE":
+        break
+
+    if stock_name not in stocks:
+        print("❌ Stock not found")
+        continue
+
+    quantity = int(input("Enter quantity: "))
+    price = stocks[stock_name]
+
+    investment = price * quantity
+    total_investment += investment
+
+    print(f"Added {stock_name} investment: ₹{investment}")
+
+print("\n💰 Total Investment Value: ₹", total_investment)
+
+# Optional: Save result to file
+save = input("Do you want to save the result to a file? (yes/no): ").lower()
+
+if save == "yes":
+    with open("portfolio.txt", "w") as file:
+        file.write("Stock Portfolio Tracker\n")
+        file.write(f"Total Investment Value: ₹{total_investment}\n")
+
+    print("✅ Data saved to portfolio.txt")
